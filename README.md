@@ -57,7 +57,21 @@ pipeline {
         }
             
         }
+        post {
+           // only triggered when blue or green sign
+           success {
+               slackSend color: "good", message: "passed"
+           }
+           // triggered when red sign
+           failure {
+               slackSend color: "danger", message: "Failed"
+           }
+           // trigger every-works
+           always {
+               slackSend color: "normal", message: "Job Done"
+           }
     }
+  }
 
 ```
 
@@ -68,8 +82,8 @@ pipeline {
 
 ## Some screen shots from Jenkins and java app:
 ### jenkins pass:
-![alt text](https://github.com/muhammad197/fursa-home-work-2/blob/46e1ae66fec0a509d89f6c25d71ef0db911c6dd1/jenscript.png)
-### jinkins pipeline script:
-![alt text](https://github.com/muhammad197/fursa-home-work-2/blob/46e1ae66fec0a509d89f6c25d71ef0db911c6dd1/jenscreen.png)
+![alt text](https://github.com/muhammad197/fursa-home-work-2/blob/4bf391733edd68ec4b0c5e16660739a75dcb8f69/jenscreen.png)
+### jenkins notify slack:
+![alt text](https://github.com/muhammad197/fursa-home-work-2/blob/4bf391733edd68ec4b0c5e16660739a75dcb8f69/slacknotifymsg.png)
 ### output html file:
 ![alt text](https://github.com/muhammad197/fursa-home-work-2/blob/46e1ae66fec0a509d89f6c25d71ef0db911c6dd1/finaloutput.png)
